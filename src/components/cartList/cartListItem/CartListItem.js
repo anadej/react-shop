@@ -1,4 +1,6 @@
 import React from "react";
+import { CartListItemContainer } from "./CartListItemStyled";
+import sprite from "../../../icons/product/products.svg";
 
 const CartListItem = ({
   id,
@@ -9,9 +11,7 @@ const CartListItem = ({
   addItem,
   removeItem,
 }) => {
-  const removeProduct = () => {
-    removeFromCart(id);
-  };
+  const removeProduct = () => removeFromCart(id);
 
   const addQuantity = () => {
     addItem(id);
@@ -22,10 +22,10 @@ const CartListItem = ({
   };
 
   return (
-    <li>
-      <h3 className="cartListItemTitle">{name}</h3>
-      <p className="cartListItemPrice">{price}</p>
-      <div className="cartListItemCount">
+    <CartListItemContainer>
+      <p className="cartItemName">{name}</p>
+      <p className="cartPrice">{price}</p>
+      <div className="cartItemOptions">
         <button
           type="button"
           disabled={quantity === 1}
@@ -33,15 +33,17 @@ const CartListItem = ({
         >
           -
         </button>
-        <p className="cartListItemQuantity">{quantity}</p>
+        <p className="cartItemQuantity">{quantity}</p>
         <button type="button" onClick={addQuantity}>
           +
         </button>
-        <button type="button" onClick={removeProduct}>
-          X
-        </button>
+        <div className="iconContainer" onClick={removeProduct}>
+          <svg className="iconBin">
+            <use href={sprite + "#icon-bin"} />
+          </svg>
+        </div>
       </div>
-    </li>
+    </CartListItemContainer>
   );
 };
 

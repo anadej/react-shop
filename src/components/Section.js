@@ -1,13 +1,13 @@
 import React from "react";
 import colors from "../styles/colors";
-import { SectionStyled } from "./SectionStyled";
+import { SectionContainer } from "./SectionStyled";
 
 const Section = ({ children, title }) => {
   return (
-    <SectionStyled colors={colors}>
+    <SectionContainer colors={colors}>
       <h2 className="sectionTitle">{title.toUpperCase()}</h2>
       {children}
-    </SectionStyled>
+    </SectionContainer>
   );
 };
 

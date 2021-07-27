@@ -1,20 +1,42 @@
-import React from "react";
-import data from "../../data/index";
+import React, { Component } from "react";
+// import data from "../../data/index";
+import { getAllAdvByCategory } from "../../services/api";
 import AdvForm from "../admin/AdvForm";
 import CartList from "../cartList/CartList";
 import ProductList from "../productList/ProductList";
 import Section from "../Section";
-import { MainStyled } from "./MainStyled";
+import { MainContainer } from "./MainStyled";
 
-class Main extends React.Component {
+const getDataByCategory = async (category) => {
+  const response = await getAllAdvByCategory(category);
+  console.log(`response.data`, response.data);
+
+  return response.data
+    ? Object.keys(response.data).map((key) => ({
+        id: key,
+        ...response.data[key],
+      }))
+    : [];
+};
+
+class Main extends Component {
   state = {
     cart: [],
-    ...data,
+    products: { phones: [], laptops: [] },
   };
+
+  async componentDidMount() {
+    const phones = await getDataByCategory("phones");
+    const laptops = await getDataByCategory("laptops");
+    this.setState({ products: { phones, laptops } });
+  }
 
   addNewAdv = (product) => {
     this.setState((prev) => ({
-      [product.category]: [...prev[product.category], product],
+      products: {
+        ...prev.products,
+        [product.category]: [...prev.products[product.category], product],
+      },
     }));
   };
 
@@ -66,8 +88,8 @@ class Main extends React.Component {
 
   render() {
     return (
-      <MainStyled>
-        <Section title={"Администрирование"}>
+      <MainContainer>
+        <Section title={"Добавление нового продукта"}>
           <AdvForm addNewAdv={this.addNewAdv} />
         </Section>
         <Section title={"Корзина"}>
@@ -81,17 +103,17 @@ class Main extends React.Component {
         </Section>
         <Section title={"Мобильные телефоны"}>
           <ProductList
-            products={this.state.phones}
+            products={this.state.products.phones}
             addToCart={this.addToCart}
           />
         </Section>
         <Section title={"Ноутбуки"}>
           <ProductList
-            products={this.state.laptops}
+            products={this.state.products.laptops}
             addToCart={this.addToCart}
           />
         </Section>
-      </MainStyled>
+      </MainContainer>
     );
   }
 }

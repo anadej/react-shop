@@ -1,25 +1,33 @@
 import styled from "styled-components";
 
-export const ProductListItemStyled = styled.li`
+export const ProductListItemContainer = styled.li`
   width: 100%;
-  padding: 10px;
-  .productListItemWrappers {
-    width: 100%;
+  padding: 20px;
+
+  .content {
+    /* width: 100%; */
     height: 100%;
     border: 1px solid ${(props) => props.colors.darkColors.secondary};
     border-radius: 14px;
     padding: 20px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
   }
-  .productListItemTitle {
+  .listItemTitle {
+    font-size: 16px;
     text-align: center;
   }
-  .productListItemImg {
-    height: 200px;
-    object-fit: contain;
-    margin-top: 20px;
+  .imageWrapper {
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
   }
+  .listItemImage {
+    height: 100%;
+  }
+
   .productListItemSale {
     margin-top: 20px;
   }
@@ -30,9 +38,21 @@ export const ProductListItemStyled = styled.li`
     flex-grow: 1;
     margin-top: 20px;
   }
-  .productListItemPrice {
-    margin-top: 20px;
+
+  .priceTitle {
+    text-align: center;
+    font-size: 20px;
   }
+  .withSalePrice {
+    text-decoration: line-through;
+    color: #dc143c;
+  }
+  .withoutSalePrice {
+    font-weight: 600;
+    color: #819ff5;
+    font-size: 30px;
+  }
+
   .productListItemButtonGroup {
     display: flex;
     align-items: center;

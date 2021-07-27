@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HeaderSyled = styled.header`
+export const HeaderContainer = styled.header`
   height: 60px;
   border-bottom: 3px solid ${(props) => props.colors.darkColors.main};
   background-color: ${(props) => props.colors.darkColors.primary};

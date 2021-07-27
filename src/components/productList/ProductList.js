@@ -1,10 +1,10 @@
 import React from "react";
 import ProductListItem from "./productListItem/ProductListItem";
-import { ProductListStyled } from "./ProductListStyled";
+import { PhoneListContainer } from "./ProductListStyled";
 
 const ProductList = ({ products, addToCart }) => {
   return (
-    <ProductListStyled>
+    <PhoneListContainer>
       {products.map((product) => (
         <ProductListItem
           product={product}
@@ -12,7 +12,7 @@ const ProductList = ({ products, addToCart }) => {
           addToCart={addToCart}
         />
       ))}
-    </ProductListStyled>
+    </PhoneListContainer>
   );
 };
 
