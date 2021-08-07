@@ -15,4 +15,10 @@ export const HeaderContainer = styled.header`
     color: ${(props) => props.colors.darkColors.main};
     text-transform: uppercase;
   }
+
+  .burgerMenu {
+    width: 30px;
+    height: 30px;
+    fill: ${(props) => props.colors.darkColors.main};
+  }
 `;

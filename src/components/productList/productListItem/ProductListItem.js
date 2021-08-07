@@ -1,6 +1,8 @@
 import React from "react";
-import colors from "../../../styles/colors";
+import { connect } from "react-redux";
 import { ProductListItemContainer } from "./ProductListItemStyled";
+import colors from "../../../styles/colors";
+import { addToCart } from "../../../redux/cart/cartAction";
 
 const ProductListItem = ({ product, addToCart }) => {
   const { id, name, image, description, isSale, price } = product;
@@ -53,4 +55,4 @@ const ProductListItem = ({ product, addToCart }) => {
   );
 };
 
-export default ProductListItem;
+export default connect(null, { addToCart })(ProductListItem);

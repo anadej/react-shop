@@ -39,7 +39,12 @@ export const getAllAdvByCategory = async (category) => {
     const response = await axios.get(
       base_URL + `/advertisements/${category}.json`
     );
-    return response;
+    return response.data
+      ? Object.keys(response.data).map((key) => ({
+          id: key,
+          ...response.data[key],
+        }))
+      : [];
   } catch (error) {
     console.log(`error`, error);
   }

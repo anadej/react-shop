@@ -7,7 +7,7 @@ export const SectionContainer = styled.div`
   }
   .sectionTitle {
     color: ${(props) => props.colors.darkColors.main};
-    margin: 20px 0 10px 10px;
+    /* margin: 20px 0 10px 10px; */
     font-size: 16px;
     text-align: center;
   }

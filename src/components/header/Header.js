@@ -33,18 +33,16 @@ class Header extends Component {
         <HeaderContainer colors={colors}>
           <h2 className="headerLogo">Logo</h2>
           {width > breakPoint ? (
-            <nav>
-              <HeaderList data={this.props.data} />
-            </nav>
+            <HeaderList />
           ) : (
             <svg className="burgerMenu" onClick={this.setModalState}>
-              <use href={sprite + "#icon-menu_40px"} />
+              <use href={sprite + "#icon-menu"} />
             </svg>
           )}
         </HeaderContainer>
         {isModalOpen && (
           <Modal hideModal={this.setModalState}>
-            <HeaderList data={this.props.data} />
+            <HeaderList />
           </Modal>
         )}
       </>

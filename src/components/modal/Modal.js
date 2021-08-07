@@ -16,9 +16,7 @@ class Modal extends Component {
     body.style.overflow = "auto";
   }
 
-  handleEsc = (e) => e.code === "Escape" && this.props.handleCloseModal();
-
-  onHandleClick = () => this.props.hideModal();
+  handleEsc = (e) => e.code === "Escape" && this.props.hideModal();
 
   handleBackdropClick = (e) => {
     if (e.target !== e.currentTarget) {
